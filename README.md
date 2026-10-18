@@ -3,7 +3,7 @@
 **Analyst:** Jason Stokes · **Completed:** 17 October 2026 · **Platform:** Microsoft Sentinel (KQL)  
 📄 **[Full incident report (PDF)](Operation-ECHOLEAK-Incident-Report.pdf)**
 
-> **Lab notice:** Training threat hunt on the **LOGN Pacific Cyber Range**. The company, people and log data are fictional. **CVE-2025-32711 (EchoLeak)** is a real, publicly disclosed Microsoft 365 Copilot vulnerability; CVE-2026-24301 (CoSnitch) and CVE-2026-42824 (SearchLeak) are as referenced in the lab scenario.
+> **Lab notice:** Threat hunt completed during my **LOG(N) Pacific internship** in the Cyber Range lab environment. The scenario, company, people and log data are simulated. **CVE-2025-32711 (EchoLeak)** is a real, publicly disclosed Microsoft 365 Copilot vulnerability; CVE-2026-24301 (CoSnitch) and CVE-2026-42824 (SearchLeak) are as referenced in the lab scenario.
 
 ---
 
@@ -19,7 +19,7 @@
 
 | | |
 |---|---|
-| 🎯 **17 / 17** | investigation flags solved (1600 / 1600 points, on time) |
+| 🎯 **17 / 17** | investigation objectives completed |
 | 📁 **13** | confidential files identified as exposed (board, M&A, salary, client data) |
 | 🔍 **3** | hypotheses tested; account compromise and configuration tampering ruled out |
 | 🚩 **4** | indicators of compromise identified for blocking |
@@ -64,6 +64,8 @@ Two external emails reached the employee. Only one had a document attachment, a 
 <details>
 <summary>Show query and results</summary>
 
+![Sentinel query showing the phishing email from globalfinancereview.net](Operation-ECHOLEAK-SCREENSHOTS/01-phishing-email.png)
+
 ```kql
 OfficeActivity_CL
 | where TimeGenerated between (datetime(2026-09-20 09:00) .. datetime(2026-09-20 11:00))
@@ -107,6 +109,8 @@ CopilotAudit_CL
 ### 3. Proving Copilot was hijacked
 
 A summary needs zero extra files. Within 6 seconds of the prompt, Copilot searched for "board minutes," "M&A" and "salary," then opened five confidential files at machine speed, one every 2 seconds. The timestamps matched the file-access log to the second.
+
+![Sentinel query showing Copilot searching and reading confidential files seconds apart](Operation-ECHOLEAK-SCREENSHOTS/02-copilot-tool-calls.png)
 
 <details>
 <summary>Show query and results</summary>
@@ -179,6 +183,8 @@ OfficeActivity_CL
 
 Copilot's replies contained fake "chart" images. Each image's web address carried stolen data in encoded form. When the employee's screen displayed the reply, it fetched the images automatically, sending the data to the attacker's site with no click. Endpoint and network tools saw only an ordinary app loading pictures.
 
+![Copilot response containing image links to metrics-cdn.analyticshub.io with encoded data](Operation-ECHOLEAK-SCREENSHOTS/03-exfiltration-response.png)
+
 <details>
 <summary>Show query and results</summary>
 
@@ -210,6 +216,8 @@ A manager suggested this was normal Copilot activity. The data said otherwise: *
 <details>
 <summary>Show query and results</summary>
 
+![Baseline query showing 16 tool calls in the hijacked session and 0 in normal sessions](Operation-ECHOLEAK-SCREENSHOTS/04-baseline-comparison.png)
+
 ```kql
 CopilotAudit_CL
 | where TimeGenerated between (datetime(2026-09-20 09:00) .. datetime(2026-09-20 11:00))
@@ -237,6 +245,8 @@ Some normal sessions also contained image links, but to the company's own ShareP
 
 <details>
 <summary>Show sign-in query and results</summary>
+
+![Sign-in log showing the user signing in only from her usual IP and location](Operation-ECHOLEAK-SCREENSHOTS/05-signin-check.png)
 
 ```kql
 EntraSignIn_CL
