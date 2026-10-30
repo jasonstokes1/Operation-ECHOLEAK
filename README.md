@@ -1,7 +1,7 @@
 # Operation ECHOLEAK — AI Prompt Injection & Copilot Data Exfiltration
 
 **Analyst:** Jason Stokes · **Completed:** 17 October 2026 · **Platform:** Microsoft Sentinel (KQL)  
-📄 **[Full incident report (PDF)](Operation-ECHOLEAK-Incident-Report.pdf)**
+**[Full incident report (PDF)](Operation-ECHOLEAK-Incident-Report.pdf)**
 
 > **Lab notice:** Threat hunt completed during my **LOG(N) Pacific internship** in the Cyber Range lab environment. The scenario, company, people and log data are simulated. **CVE-2025-32711 (EchoLeak)** is a real, publicly disclosed Microsoft 365 Copilot vulnerability; CVE-2026-24301 (CoSnitch) and CVE-2026-42824 (SearchLeak) are as referenced in the lab scenario.
 
@@ -19,11 +19,11 @@
 
 | | |
 |---|---|
-| 🎯 **17 / 17** | investigation objectives completed |
-| 📁 **13** | confidential files identified as exposed (board, M&A, salary, client data) |
-| 🔍 **3** | hypotheses tested; account compromise and configuration tampering ruled out |
-| 🚩 **4** | indicators of compromise identified for blocking |
-| 🛡️ **2** | detection rules written to catch this attack in future |
+| **17 / 17** | investigation objectives completed |
+| **13** | confidential files identified as exposed (board, M&A, salary, client data) |
+| **3** | hypotheses tested; account compromise and configuration tampering ruled out |
+| **4** | indicators of compromise identified for blocking |
+| **2** | detection rules written to catch this attack in future |
 
 **Classification:** External input manipulation (indirect prompt injection via a poisoned document)
 
@@ -239,9 +239,9 @@ Some normal sessions also contained image links, but to the company's own ShareP
 
 | Hypothesis | Evidence | Result |
 |---|---|---|
-| Stolen user account | Sign-ins only from the employee's usual IP and location, with security checks passed | ❌ Ruled out |
-| Tampered Copilot settings | Settings file was read but never modified | ❌ Ruled out |
-| Malicious outside content | Email → document → innocent prompt → hijacked actions within seconds | ✅ **Confirmed** |
+| Stolen user account | Sign-ins only from the employee's usual IP and location, with security checks passed | Ruled out |
+| Tampered Copilot settings | Settings file was read but never modified | Ruled out |
+| Malicious outside content | Email → document → innocent prompt → hijacked actions within seconds | **Confirmed** |
 
 <details>
 <summary>Show sign-in query and results</summary>
