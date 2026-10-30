@@ -1,4 +1,4 @@
-# Operation ECHOLEAK — AI Prompt Injection & Copilot Data Exfiltration
+# Operation ECHOLEAK: AI Prompt Injection & Copilot Data Exfiltration
 
 **Analyst:** Jason Stokes · **Completed:** 17 October 2026 · **Platform:** Microsoft Sentinel (KQL)  
 **[Full incident report (PDF)](Operation-ECHOLEAK-Incident-Report.pdf)**
@@ -322,14 +322,14 @@ CopilotAudit_CL
 
 | Stage | Technique |
 |---|---|
-| Delivery | T1566.001 — Phishing: Spearphishing Attachment |
-| User trigger | T1204.002 — User Execution: Malicious File |
-| AI hijack | AML.T0051.001 — LLM Prompt Injection: Indirect |
-| Instruction execution | T1059 — Command and Scripting Interpreter |
-| Discovery | T1083 — File and Directory Discovery |
-| Collection | T1213 — Data from Information Repositories |
-| Configuration exposure | T1082 — System Information Discovery |
-| Exfiltration | T1041 — Exfiltration Over C2 Channel |
+| Delivery | T1566.001, Phishing: Spearphishing Attachment |
+| User trigger | T1204.002, User Execution: Malicious File |
+| AI hijack | AML.T0051.001, LLM Prompt Injection: Indirect |
+| Instruction execution | T1059, Command and Scripting Interpreter |
+| Discovery | T1083, File and Directory Discovery |
+| Collection | T1213, Data from Information Repositories |
+| Configuration exposure | T1082, System Information Discovery |
+| Exfiltration | T1041, Exfiltration Over C2 Channel |
 
 </details>
 
@@ -350,8 +350,8 @@ While checking sign-ins, I noticed another user signing in from **London and Ams
 
 ## References
 
-- [MSRC — CVE-2025-32711](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-32711)
-- [The Hacker News — Zero-Click AI Vulnerability Exposes Microsoft 365 Copilot Data](https://thehackernews.com/2025/06/zero-click-ai-vulnerability-exposes.html)
-- [Unit 42 — Fooling AI Agents: Web-Based Indirect Prompt Injection Observed in the Wild](https://unit42.paloaltonetworks.com/ai-agent-prompt-injection/)
-- [Truesec — Novel Cyber Attack Exposes Microsoft 365 Copilot](https://www.truesec.com/hub/blog/novel-cyber-attack-exposes-microsoft-365-copilot)
+- [MSRC, CVE-2025-32711](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-32711)
+- [The Hacker News, Zero-Click AI Vulnerability Exposes Microsoft 365 Copilot Data](https://thehackernews.com/2025/06/zero-click-ai-vulnerability-exposes.html)
+- [Unit 42, Fooling AI Agents: Web-Based Indirect Prompt Injection Observed in the Wild](https://unit42.paloaltonetworks.com/ai-agent-prompt-injection/)
+- [Truesec, Novel Cyber Attack Exposes Microsoft 365 Copilot](https://www.truesec.com/hub/blog/novel-cyber-attack-exposes-microsoft-365-copilot)
 - [MITRE ATT&CK](https://attack.mitre.org/) · [MITRE ATLAS](https://atlas.mitre.org/)
